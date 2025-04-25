@@ -1,26 +1,123 @@
-@import 'tailwindcss';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Background and foreground */
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+
+    /* Card and popover */
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    /* Primary color */
+    --primary: 169 58% 36%;
+    --primary-light: 169 58% 50%;
+    --primary-dark: 169 58% 25%;
+    --primary-foreground: 0 0% 98%;
+
+    /* Secondary color */
+    --secondary: 174 50% 42%;
+    --secondary-light: 174 50% 55%;
+    --secondary-dark: 174 50% 30%;
+    --secondary-foreground: 0 0% 98%;
+
+    /* Accent colors */
+    --accent: 5 85% 65%;
+    --accent-light: 5 85% 75%;
+    --accent-dark: 5 85% 55%;
+    --accent-foreground: 0 0% 98%;
+
+    /* Neutral colors */
+    --neutral-light: 0 0% 96%;
+    --neutral-medium: 0 0% 70%;
+    --neutral-dark: 0 0% 20%;
+
+    /* Highlight colors */
+    --highlight: 50 90% 60%;
+    --highlight-light: 50 90% 70%;
+    --highlight-dark: 50 90% 50%;
+
+    /* Destructive color */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* Border and input */
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 10% 3.9%;
+
+    /* Spotify Colors */
+    --spotify-green: 141 75.5% 48.0%;
+    --spotify-black: 0 0% 7%;
+    --spotify-white: 0 0% 100%;
+
+    /* MyAnimeList Colors */
+    --mal-blue: 209 76% 40%;
+    --mal-light-blue: 209 76% 50%;
+    --mal-dark-blue: 209 76% 30%;
+    --mal-background: 0 0% 96%;
+    --mal-text: 0 0% 20%;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 169 58% 25%;
+    --primary-light: 169 58% 36%;
+    --primary-dark: 169 58% 15%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 174 50% 30%;
+    --secondary-light: 174 50% 42%;
+    --secondary-dark: 174 50% 20%;
+    --secondary-foreground: 0 0% 98%;
+
+    --accent: 5 85% 55%;
+    --accent-light: 5 85% 65%;
+    --accent-dark: 5 85% 45%;
+    --accent-foreground: 0 0% 98%;
+
+    --neutral-light: 0 0% 20%;
+    --neutral-medium: 0 0% 40%;
+    --neutral-dark: 0 0% 80%;
+
+    --highlight: 50 90% 50%;
+    --highlight-light: 50 90% 60%;
+    --highlight-dark: 50 90% 40%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    
+    /* Dark mode Spotify colors */
+    --spotify-green: 141 75.5% 48.0%;
+    --spotify-black: 0 0% 7%;
+    --spotify-white: 0 0% 100%;
+
+    /* Dark mode MyAnimeList colors */
+    --mal-blue: 209 76% 30%;
+    --mal-light-blue: 209 76% 40%;
+    --mal-dark-blue: 209 76% 20%;
+    --mal-background: 0 0% 15%;
+    --mal-text: 0 0% 90%;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
+
