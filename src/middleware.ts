@@ -26,14 +26,14 @@ export async function middleware(request: NextRequest) {
   // To the login page, but if already signed in, go back home
   if (isAuthRoute) {
     if (session) {
-      return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
+      return NextResponse.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
     };
     return;
   };
 
   // Signed-out users cannot access non-public routes
   if (!session && !isPublicRoute) {
-    return Response.redirect(new URL('/login', nextUrl));
+    return NextResponse.redirect(new URL('/login', nextUrl));
   };
   
   return;
