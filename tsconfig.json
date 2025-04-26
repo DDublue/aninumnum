@@ -5,7 +5,8 @@
     "outDir": "build",
     "jsx": "react-jsx",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "types": ["node"]
+    "types": ["node"],
+    "skipLibCheck": true
   },
   "include": ["next-env.d.ts", ".next/types/**/*.ts", "src/**/*.ts", "test/**/*.ts", "src/**/*.tsx", "test/**/*.tsx"],
   "exclude": ["node_modules"]

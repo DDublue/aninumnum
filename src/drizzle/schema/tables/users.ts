@@ -4,7 +4,7 @@ import {
   text,
 } from 'drizzle-orm/pg-core';
 
-const users = pgTable('user', {
+export const users = pgTable('user', {
   id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
   name: text('name'),
   email: text('email').unique(),
