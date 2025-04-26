@@ -52,7 +52,7 @@
     --ring: 240 10% 3.9%;
 
     /* Spotify Colors */
-    --spotify-green: 141 75.5% 48.0%;
+    --spotify-green: 141 75.5% 48%;
     --spotify-black: 0 0% 7%;
     --spotify-white: 0 0% 100%;
 
@@ -97,9 +97,9 @@
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    
+
     /* Dark mode Spotify colors */
-    --spotify-green: 141 75.5% 48.0%;
+    --spotify-green: 141 75.5% 48%;
     --spotify-black: 0 0% 7%;
     --spotify-white: 0 0% 100%;
 
@@ -120,4 +120,3 @@
     @apply bg-background text-foreground;
   }
 }
-

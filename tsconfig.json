@@ -3,11 +3,38 @@
   "compilerOptions": {
     "rootDir": ".",
     "outDir": "build",
-    "jsx": "react-jsx",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "types": ["node"],
-    "skipLibCheck": true
+    "jsx": "preserve",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "types": [
+      "node"
+    ],
+    "skipLibCheck": true,
+    "allowJs": true,
+    "noEmit": true,
+    "incremental": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
-  "include": ["next-env.d.ts", ".next/types/**/*.ts", "src/**/*.ts", "test/**/*.ts", "src/**/*.tsx", "test/**/*.tsx"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    ".next/types/**/*.ts",
+    "src/**/*.ts",
+    "test/**/*.ts",
+    "src/**/*.tsx",
+    "test/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
