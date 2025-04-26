@@ -20,7 +20,7 @@ export async function middleware(request: NextRequest) {
 
   // Routes used for authentication, so don't disturb its process
   if (isApiAuthRoute) {
-    return;
+    return NextResponse.next();
   };
 
   // To the login page, but if already signed in, go back home
@@ -28,7 +28,7 @@ export async function middleware(request: NextRequest) {
     if (session) {
       return NextResponse.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
     };
-    return;
+    return NextResponse.next();
   };
 
   // Signed-out users cannot access non-public routes
@@ -36,11 +36,10 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/login', nextUrl));
   };
   
-  return;
+  return NextResponse.next();
 };
 
 export const config = {
-  runtime: "nodejs",
   matcher: [
     // Skip Next.js internals and all static files, unless found in search params
     '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
