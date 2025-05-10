@@ -36,6 +36,8 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/login', nextUrl));
   };
   
+  console.log('signed in');
+  console.log(session);
   return NextResponse.next();
 };
 

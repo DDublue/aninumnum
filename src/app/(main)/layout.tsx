@@ -1,12 +1,12 @@
 import '../globals.css';
 
-export default function LoginLayout({
+export default function MainLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+    <div className="">
       {children}
     </div>
   );

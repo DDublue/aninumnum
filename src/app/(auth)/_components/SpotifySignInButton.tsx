@@ -1,22 +1,33 @@
 'use client';
 
 import {Button} from '@/components/ui/button';
-import {signIn} from '@/lib/auth-client';
+import {auth} from '@/lib/auth';
+import React, { ButtonHTMLAttributes } from 'react';
 import {FaSpotify} from 'react-icons/fa';
 
-export default function SpotifySignInButton() {
-  // Sign in function
-  const handleSignIn = () => {
-    signIn();
-  };
+interface SpotifySignInButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  children?: React.ReactNode;
+  showIcon?: boolean;
+  disabled?: boolean;
+  loading?: boolean;
+}
 
+export default function SpotifySignInButton({
+  className,
+  showIcon = true,
+  disabled = false,
+  loading = false,
+  ...props
+}: SpotifySignInButtonProps) {
   return (
     <Button
-      onClick={handleSignIn}
-      variant="spotify"
-      className="w-full flex items-center justify-center gap-2"
+      type="submit"
+      variant={"spotify"}
+      className={className}
+      disabled={disabled || loading}
+      {...props}
     >
-      <FaSpotify className="text-xl" />
+      {showIcon && <FaSpotify />}
       Sign in with Spotify
     </Button>
   )
