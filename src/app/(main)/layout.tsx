@@ -10,7 +10,7 @@ export default function MainLayout({
   return (
     <div className="relative">
       <Header />
-      <main className="w-full bg-accent">
+      <main className="w-full bg-background">
         <div className="container mx-auto max-w-7xl">
           {children}
         </div>

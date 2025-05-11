@@ -32,10 +32,10 @@ body {
   --color-secondary-foreground: hsl(0 0% 98%);
 
   /* Accent colors */
-  --color-accent: hsl(5 85% 65%);
-  --color-accent-light: hsl(5 85% 75%);
-  --color-accent-dark: hsl(5 85% 55%);
-  --color-accent-foreground: hsl(0 0% 98%);
+  --color-accent: hsl(0 0% 91%);
+  --color-accent-light: hsl(0 0% 94%);
+  --color-accent-dark: hsl(0 0% 88%);
+  --color-accent-foreground: hsl(240 10% 3.9%); /* dark text for contrast */
 
   /* Neutral colors */
   --color-neutral-light: hsl(0 0% 96%);
@@ -92,10 +92,10 @@ body {
   --secondary-foreground: hsl(0 0% 98%);
 
   /* Accent colors */
-  --accent: hsl(5 85% 65%);
-  --accent-light: hsl(5 85% 75%);
-  --accent-dark: hsl(5 85% 55%);
-  --accent-foreground: hsl(0 0% 98%);
+  --accent: hsl(0 0% 91%);
+  --accent-light: hsl(0 0% 94%);
+  --accent-dark: hsl(0 0% 88%);
+  --accent-foreground: hsl(240 10% 3.9%); /* dark text for contrast */
 
   /* Neutral colors */
   --neutral-light: hsl(0 0% 96%);

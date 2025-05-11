@@ -1,7 +1,7 @@
 export default async function HomePage() {
   return (
     <>
-      <div className="bg-accent-dark">
+      <div className="min-h-svh">
         Home Page
       </div>
     </>
