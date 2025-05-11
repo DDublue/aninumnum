@@ -1,7 +1,9 @@
 export default async function HomePage() {
   return (
     <>
-      <div>Home Page</div>
+      <div className="bg-accent-dark">
+        Home Page
+      </div>
     </>
   )
 };
