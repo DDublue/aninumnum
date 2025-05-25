@@ -3,7 +3,7 @@ import SpotifySignInButton from "../_components/SpotifySignInButton";
 
 export default async function LoginPage() {
   return (
-    <LoginCard >
+    <LoginCard>
       <SpotifySignInButton />
     </LoginCard>
   )

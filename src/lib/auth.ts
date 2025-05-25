@@ -16,9 +16,8 @@ export const auth = betterAuth({
   }),
   socialProviders: {
     spotify: { 
-      clientId: process.env.SPOTIFY_CLIENT_ID!, 
-      clientSecret: process.env.SPOTIFY_CLIENT_SECRET!,
-      // redirectURI: "http://127.0.0.1:3000/api/auth/callback/spotify",
+      clientId: process.env.SPOTIFY_CLIENT_ID as string, 
+      clientSecret: process.env.SPOTIFY_CLIENT_SECRET as string,
     },
   },
   plugins: [
