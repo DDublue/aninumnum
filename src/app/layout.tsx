@@ -13,9 +13,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="overscroll-y-none">
-        {children}
-      </body>
+      <body className="overscroll-y-none">{children}</body>
     </html>
   );
 }

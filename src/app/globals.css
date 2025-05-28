@@ -1,5 +1,5 @@
-@import "tw-animate-css";
-@import "tailwindcss";
+@import 'tw-animate-css';
+@import 'tailwindcss';
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -12,7 +12,7 @@ body {
   --color-*: initial;
   --color-background: hsl(0 0% 100%);
   --color-foreground: hsl(240 10% 3.9%);
-  
+
   /* Card and popover */
   --color-card: hsl(0 0% 100%);
   --color-card-foreground: hsl(240 10% 3.9%);

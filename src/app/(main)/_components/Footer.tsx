@@ -1,5 +1,3 @@
-
-
 export default function Footer() {
   return (
     <>
@@ -9,10 +7,9 @@ export default function Footer() {
             <p className="mt-1 flex flex-col w-full items-start justify-center">
               Copyright © 2024 David Wu
             </p>
-
           </div>
         </section>
       </footer>
     </>
-  )
+  );
 }

@@ -4,9 +4,9 @@ import {
   DEFAULT_LOGIN_REDIRECT,
   apiAuthPrefix,
   authRoutes,
-  publicRoutes
+  publicRoutes,
 } from './lib/routes';
- 
+
 export async function middleware(request: NextRequest) {
   const {nextUrl} = request;
   const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
@@ -22,26 +22,26 @@ export async function middleware(request: NextRequest) {
   // Routes used for authentication, so don't disturb its process
   if (isApiAuthRoute) {
     return NextResponse.next();
-  };
+  }
 
   // To the login page, but if already signed in, go back home
   if (isAuthRoute) {
     if (sessionCookie) {
       return NextResponse.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
-    };
+    }
     return NextResponse.next();
-  };
+  }
 
   // Signed-out users cannot access non-public routes
   if (!sessionCookie && !isPublicRoute) {
     return NextResponse.redirect(new URL('/login', nextUrl));
-  };
-  
+  }
+
   if (sessionCookie) {
     console.log('signed in');
-  };
+  }
   return NextResponse.next();
-};
+}
 
 export const config = {
   matcher: [

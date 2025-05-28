@@ -3,5 +3,5 @@ export default async function AccountPage() {
     <>
       <div>Account Page</div>
     </>
-  )
-};
+  );
+}

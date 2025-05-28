@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import {Button} from '@/components/ui/button';
 import {
   NavigationMenu,
   // NavigationMenuContent,
@@ -7,12 +7,11 @@ import {
   NavigationMenuList,
   // NavigationMenuTrigger,
   // navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
-import {auth} from "@/lib/auth";
-import { headers } from "next/headers";
-import Link from "next/link";
-import UserDropdownMenu from "./header/UserDropdownMenu";
-
+} from '@/components/ui/navigation-menu';
+import {auth} from '@/lib/auth';
+import {headers} from 'next/headers';
+import Link from 'next/link';
+import UserDropdownMenu from './header/UserDropdownMenu';
 
 export default async function Header() {
   const session = await auth.api.getSession({
@@ -55,8 +54,7 @@ export default async function Header() {
             <UserDropdownMenu session={session} />
           )}
         </div>
-
       </section>
     </header>
-  )
+  );
 }
