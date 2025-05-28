@@ -19,7 +19,11 @@ export default function SpotifySignInButton({
   return (
     <Button
       type="submit"
-      onClick={signIn}
+      onClick={async () => {
+        await signIn.social({
+          provider: "spotify",
+        })
+      }}
       variant={"spotify"}
       className={className}
       disabled={disabled || loading}

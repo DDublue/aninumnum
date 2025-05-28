@@ -8,9 +8,9 @@ export default function MainLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="relative">
+    <div className="relative min-h-screen flex flex-col">
       <Header />
-      <main className="w-full bg-background">
+      <main className="flex-1 w-full bg-background">
         <div className="container mx-auto max-w-7xl">
           {children}
         </div>

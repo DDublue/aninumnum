@@ -1,6 +1,5 @@
 import {NextRequest, NextResponse} from 'next/server';
-import { headers } from 'next/headers';
-import { auth } from './lib/auth';
+import {getSessionCookie} from 'better-auth/cookies';
 import {
   DEFAULT_LOGIN_REDIRECT,
   apiAuthPrefix,
@@ -14,9 +13,11 @@ export async function middleware(request: NextRequest) {
   const isAuthRoute = authRoutes.includes(nextUrl.pathname);
   const isPublicRoute = publicRoutes.includes(nextUrl.pathname);
 
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
+  // const session = await auth.api.getSession({
+  //   headers: await headers(),
+  // });
+
+  const sessionCookie = getSessionCookie(request);
 
   // Routes used for authentication, so don't disturb its process
   if (isApiAuthRoute) {
@@ -25,18 +26,18 @@ export async function middleware(request: NextRequest) {
 
   // To the login page, but if already signed in, go back home
   if (isAuthRoute) {
-    if (session) {
+    if (sessionCookie) {
       return NextResponse.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
     };
     return NextResponse.next();
   };
 
   // Signed-out users cannot access non-public routes
-  if (!session && !isPublicRoute) {
+  if (!sessionCookie && !isPublicRoute) {
     return NextResponse.redirect(new URL('/login', nextUrl));
   };
   
-  if (session) {
+  if (sessionCookie) {
     console.log('signed in');
   };
   return NextResponse.next();

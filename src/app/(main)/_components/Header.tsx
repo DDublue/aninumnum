@@ -1,16 +1,24 @@
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
+  // NavigationMenuContent,
+  // NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
+  // NavigationMenuTrigger,
+  // navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import {auth} from "@/lib/auth";
+import { headers } from "next/headers";
 import Link from "next/link";
+import UserDropdownMenu from "./header/UserDropdownMenu";
 
-export default function Header() {
+
+export default async function Header() {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
   return (
     <header className="sticky top-0 left-0 z-50 w-full bg-neutral-light rounded-b-md border-b-2 border-b-border">
       <section className="container flex h-14 mx-auto max-w-7xl z-20 items-center gap-4 px-4 md:px-6 lg:px-8">
@@ -35,13 +43,19 @@ export default function Header() {
           </NavigationMenuList>
         </NavigationMenu>
         {/* Account/setting/logout button */}
+
         <div className="ml-auto">
-          <Button asChild>
-            <Link href="/login" prefetch={false}>
-              Login
-            </Link>
-          </Button>
+          {!session ? (
+            <Button asChild>
+              <Link href="/login" prefetch={false}>
+                Login
+              </Link>
+            </Button>
+          ) : (
+            <UserDropdownMenu session={session} />
+          )}
         </div>
+
       </section>
     </header>
   )
