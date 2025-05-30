@@ -1,122 +1,204 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tw-animate-css';
+@import 'tailwindcss';
 
-@layer base {
-  :root {
-    /* Background and foreground */
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
+@custom-variant dark (&:where(.dark, .dark *));
 
-    /* Card and popover */
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-    /* Primary color */
-    --primary: 169 58% 36%;
-    --primary-light: 169 58% 50%;
-    --primary-dark: 169 58% 25%;
-    --primary-foreground: 0 0% 98%;
+@theme {
+  /* Custom colors */
+  --color-*: initial;
+  --color-background: hsl(0 0% 100%);
+  --color-foreground: hsl(240 10% 3.9%);
 
-    /* Secondary color */
-    --secondary: 174 50% 42%;
-    --secondary-light: 174 50% 55%;
-    --secondary-dark: 174 50% 30%;
-    --secondary-foreground: 0 0% 98%;
+  /* Card and popover */
+  --color-card: hsl(0 0% 100%);
+  --color-card-foreground: hsl(240 10% 3.9%);
+  --color-popover: hsl(0 0% 100%);
+  --color-popover-foreground: hsl(240 10% 3.9%);
 
-    /* Accent colors */
-    --accent: 5 85% 65%;
-    --accent-light: 5 85% 75%;
-    --accent-dark: 5 85% 55%;
-    --accent-foreground: 0 0% 98%;
+  /* Primary color */
+  --color-primary: hsl(169 58% 36%);
+  --color-primary-light: hsl(169 58% 50%);
+  --color-primary-dark: hsl(169 58% 25%);
+  --color-primary-foreground: hsl(0 0% 98%);
 
-    /* Neutral colors */
-    --neutral-light: 0 0% 96%;
-    --neutral-medium: 0 0% 70%;
-    --neutral-dark: 0 0% 20%;
+  /* Secondary color */
+  --color-secondary: hsl(174 50% 42%);
+  --color-secondary-light: hsl(174 50% 55%);
+  --color-secondary-dark: hsl(174 50% 30%);
+  --color-secondary-foreground: hsl(0 0% 98%);
 
-    /* Highlight colors */
-    --highlight: 50 90% 60%;
-    --highlight-light: 50 90% 70%;
-    --highlight-dark: 50 90% 50%;
+  /* Accent colors */
+  --color-accent: hsl(0 0% 91%);
+  --color-accent-light: hsl(0 0% 94%);
+  --color-accent-dark: hsl(0 0% 88%);
+  --color-accent-foreground: hsl(240 10% 3.9%); /* dark text for contrast */
 
-    /* Destructive color */
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+  /* Neutral colors */
+  --color-neutral-light: hsl(0 0% 96%);
+  --color-neutral-medium: hsl(0 0% 70%);
+  --color-neutral-dark: hsl(0 0% 20%);
 
-    /* Border and input */
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 10% 3.9%;
+  /* Highlight colors */
+  --color-highlight: hsl(50 90% 60%);
+  --color-highlight-light: hsl(50 90% 70%);
+  --color-highlight-dark: hsl(50 90% 50%);
 
-    /* Spotify Colors */
-    --spotify-green: 141 75.5% 48%;
-    --spotify-black: 0 0% 7%;
-    --spotify-white: 0 0% 100%;
+  /* Destructive color */
+  --color-destructive: hsl(0 84.2% 60.2%);
+  --color-destructive-foreground: hsl(0 0% 98%);
 
-    /* MyAnimeList Colors */
-    --mal-blue: 209 76% 40%;
-    --mal-light-blue: 209 76% 50%;
-    --mal-dark-blue: 209 76% 30%;
-    --mal-background: 0 0% 96%;
-    --mal-text: 0 0% 20%;
-  }
+  /* Border and input */
+  --color-border: hsl(240 5.9% 90%);
+  --color-input: hsl(240 5.9% 90%);
+  --color-ring: hsl(240 10% 3.9%);
 
-  .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
+  /* Spotify Colors */
+  --color-spotify-green: hsl(141 75.5% 48%);
+  --color-spotify-black: hsl(0 0% 7%);
+  --color-spotify-white: hsl(0 0% 100%);
 
-    --primary: 169 58% 25%;
-    --primary-light: 169 58% 36%;
-    --primary-dark: 169 58% 15%;
-    --primary-foreground: 0 0% 98%;
+  /* MyAnimeList Colors */
+  --color-mal-blue: hsl(209 76% 40%);
+  --color-mal-light-blue: hsl(209 76% 50%);
+  --color-mal-dark-blue: hsl(209 76% 30%);
+  --color-mal-background: hsl(0 0% 96%);
+  --color-mal-text: hsl(0 0% 20%);
+}
 
-    --secondary: 174 50% 30%;
-    --secondary-light: 174 50% 42%;
-    --secondary-dark: 174 50% 20%;
-    --secondary-foreground: 0 0% 98%;
+:root {
+  /* Background and foreground */
+  --foreground: hsl(240 10% 3.9%);
 
-    --accent: 5 85% 55%;
-    --accent-light: 5 85% 65%;
-    --accent-dark: 5 85% 45%;
-    --accent-foreground: 0 0% 98%;
+  /* Card and popover */
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(240 10% 3.9%);
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: hsl(240 10% 3.9%);
 
-    --neutral-light: 0 0% 20%;
-    --neutral-medium: 0 0% 40%;
-    --neutral-dark: 0 0% 80%;
+  /* Primary color */
+  --primary: hsl(169 58% 36%);
+  --primary-light: hsl(169 58% 50%);
+  --primary-dark: hsl(169 58% 25%);
+  --primary-foreground: hsl(0 0% 98%);
 
-    --highlight: 50 90% 50%;
-    --highlight-light: 50 90% 60%;
-    --highlight-dark: 50 90% 40%;
+  /* Secondary color */
+  --secondary: hsl(174 50% 42%);
+  --secondary-light: hsl(174 50% 55%);
+  --secondary-dark: hsl(174 50% 30%);
+  --secondary-foreground: hsl(0 0% 98%);
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
+  /* Accent colors */
+  --accent: hsl(0 0% 91%);
+  --accent-light: hsl(0 0% 94%);
+  --accent-dark: hsl(0 0% 88%);
+  --accent-foreground: hsl(240 10% 3.9%); /* dark text for contrast */
 
-    /* Dark mode Spotify colors */
-    --spotify-green: 141 75.5% 48%;
-    --spotify-black: 0 0% 7%;
-    --spotify-white: 0 0% 100%;
+  /* Neutral colors */
+  --neutral-light: hsl(0 0% 96%);
+  --neutral-medium: hsl(0 0% 70%);
+  --neutral-dark: hsl(0 0% 20%);
 
-    /* Dark mode MyAnimeList colors */
-    --mal-blue: 209 76% 30%;
-    --mal-light-blue: 209 76% 40%;
-    --mal-dark-blue: 209 76% 20%;
-    --mal-background: 0 0% 15%;
-    --mal-text: 0 0% 90%;
-  }
+  /* Highlight colors */
+  --highlight: hsl(50 90% 60%);
+  --highlight-light: hsl(50 90% 70%);
+  --highlight-dark: hsl(50 90% 50%);
+
+  /* Destructive color */
+  --destructive: hsl(0 84.2% 60.2%);
+  --destructive-foreground: hsl(0 0% 98%);
+
+  /* Border and input */
+  --border: hsl(240 5.9% 90%);
+  --input: hsl(240 5.9% 90%);
+  --ring: hsl(240 10% 3.9%);
+
+  /* Spotify Colors */
+  --spotify-green: hsl(141 75.5% 48%);
+  --spotify-black: hsl(0 0% 7%);
+  --spotify-white: hsl(0 0% 100%);
+
+  /* MyAnimeList Colors */
+  --mal-blue: hsl(209 76% 40%);
+  --mal-light-blue: hsl(209 76% 50%);
+  --mal-dark-blue: hsl(209 76% 30%);
+  --mal-background: hsl(0 0% 96%);
+  --mal-text: hsl(0 0% 20%);
+}
+
+.dark {
+  --background: hsl(240 10% 3.9%);
+  --foreground: hsl(0 0% 98%);
+  --card: hsl(240 10% 3.9%);
+  --card-foreground: hsl(0 0% 98%);
+  --popover: hsl(240 10% 3.9%);
+  --popover-foreground: hsl(0 0% 98%);
+
+  --primary: hsl(169 58% 25%);
+  --primary-light: hsl(169 58% 36%);
+  --primary-dark: hsl(169 58% 15%);
+  --primary-foreground: hsl(0 0% 98%);
+
+  --secondary: hsl(174 50% 30%);
+  --secondary-light: hsl(174 50% 42%);
+  --secondary-dark: hsl(174 50% 20%);
+  --secondary-foreground: hsl(0 0% 98%);
+
+  --accent: hsl(5 85% 55%);
+  --accent-light: hsl(5 85% 65%);
+  --accent-dark: hsl(5 85% 45%);
+  --accent-foreground: hsl(0 0% 98%);
+
+  --neutral-light: hsl(0 0% 20%);
+  --neutral-medium: hsl(0 0% 40%);
+  --neutral-dark: hsl(0 0% 80%);
+
+  --highlight: hsl(50 90% 50%);
+  --highlight-light: hsl(50 90% 60%);
+  --highlight-dark: hsl(50 90% 40%);
+
+  --destructive: hsl(0 62.8% 30.6%);
+  --destructive-foreground: hsl(0 0% 98%);
+
+  /* Dark mode Spotify colors */
+  --spotify-green: hsl(141 75.5% 48%);
+  --spotify-black: hsl(0 0% 7%);
+  --spotify-white: hsl(0 0% 100%);
+
+  /* Dark mode MyAnimeList colors */
+  --mal-blue: hsl(209 76% 30%);
+  --mal-light-blue: hsl(209 76% 40%);
+  --mal-dark-blue: hsl(209 76% 20%);
+  --mal-background: hsl(0 0% 15%);
+  --mal-text: hsl(0 0% 90%);
+}
+
+@utility border-border {
+  border-color: hsl(var(--border));
+}
+
+@utility bg-background {
+  background-color: --value(--bg-background);
+}
+
+@utility text-foreground {
+  color: --value(--text-foreground);
 }
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border outline-ring/50;
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .content-container {
+    @apply mx-auto max-w-7xl px-4;
   }
 }
