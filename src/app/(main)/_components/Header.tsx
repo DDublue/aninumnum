@@ -19,7 +19,7 @@ export default async function Header() {
   });
 
   return (
-    <header className="sticky top-0 left-0 z-50 w-full bg-neutral-light rounded-b-md border-b-2 border-b-border">
+    <header className="sticky top-0 left-0 z-50 w-full bg-neutral-light rounded-b-md border-b-0 border-b-border">
       <section className="container flex h-14 mx-auto max-w-7xl z-20 items-center gap-4 px-4 md:px-6 lg:px-8">
         {/* Name and redirect to landing page if clicked */}
         <div className="flex w-24 mr-8">
