@@ -3,18 +3,14 @@
  * These routes do not require authentication
  * @type {string[]}
  */
-export const publicRoutes = [
-  '/',
-];
+export const publicRoutes = ['/'];
 
 /**
  * Array of routes that used for authentication.
  * These routes will redirect logged in users to the landing page
  * @type {string[]}
  */
-export const authRoutes = [
-  '/login',
-];
+export const authRoutes = ['/login'];
 
 /**
  * Prefix for API authentication routes.

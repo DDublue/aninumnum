@@ -1,46 +1,49 @@
 import {NextRequest, NextResponse} from 'next/server';
-import { headers } from 'next/headers';
-import { auth } from './lib/auth';
+import {getSessionCookie} from 'better-auth/cookies';
 import {
   DEFAULT_LOGIN_REDIRECT,
   apiAuthPrefix,
   authRoutes,
-  publicRoutes
+  publicRoutes,
 } from './lib/routes';
- 
+
 export async function middleware(request: NextRequest) {
   const {nextUrl} = request;
   const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
   const isAuthRoute = authRoutes.includes(nextUrl.pathname);
   const isPublicRoute = publicRoutes.includes(nextUrl.pathname);
 
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
+  // const session = await auth.api.getSession({
+  //   headers: await headers(),
+  // });
+
+  const sessionCookie = getSessionCookie(request);
 
   // Routes used for authentication, so don't disturb its process
   if (isApiAuthRoute) {
-    return;
-  };
+    return NextResponse.next();
+  }
 
   // To the login page, but if already signed in, go back home
   if (isAuthRoute) {
-    if (session) {
+    if (sessionCookie) {
       return NextResponse.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
-    };
-    return;
-  };
+    }
+    return NextResponse.next();
+  }
 
   // Signed-out users cannot access non-public routes
-  if (!session && !isPublicRoute) {
+  if (!sessionCookie && !isPublicRoute) {
     return NextResponse.redirect(new URL('/login', nextUrl));
-  };
-  
-  return;
-};
+  }
+
+  if (sessionCookie) {
+    console.log('signed in');
+  }
+  return NextResponse.next();
+}
 
 export const config = {
-  runtime: "nodejs",
   matcher: [
     // Skip Next.js internals and all static files, unless found in search params
     '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
