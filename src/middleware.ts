@@ -37,9 +37,9 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/login', nextUrl));
   }
 
-  if (sessionCookie) {
-    console.log('signed in');
-  }
+  // if (sessionCookie) {
+  //   console.log('signed in');
+  // }
   return NextResponse.next();
 }
 
