@@ -2,7 +2,7 @@
 
 export default function CreateLayout({children}: {children: React.ReactNode}) {
   return (
-    <div className="">
+    <div className="min-h-svh bg-accent">
       {children}
     </div>
   );
